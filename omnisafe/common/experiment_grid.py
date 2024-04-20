@@ -441,7 +441,7 @@ class ExperimentGrid:
         announcement = f'\n{joined_var_names}\n\n{line}'
         print(announcement)
 
-        pool = Pool(max_workers=num_pool, mp_context=mp.get_context('spawn'))
+        # pool = Pool(max_workers=num_pool, mp_context=mp.get_context('spawn'))
         # run the variants.
         results = []
         exp_names = []
@@ -463,8 +463,8 @@ class ExperimentGrid:
                 var['logger_cfgs'] = {'log_dir': './exp'}
             var['logger_cfgs'].update({'log_dir': exp_log_dir})
             self.save_same_exps_config(exp_log_dir, var)
-            results.append(pool.submit(thunk, str(idx), var['algo'], var['env_id'], var))
-        pool.shutdown()
+            results.append(thunk(str(idx), var['algo'], var['env_id'], var))
+        # pool.shutdown()
 
         if not is_test:
             self.save_results(exp_names, variants, results)
@@ -489,7 +489,7 @@ class ExperimentGrid:
         with open(path, 'a+', encoding='utf-8') as f:
             for idx, _ in enumerate(variants):
                 f.write(exp_names[idx] + ': ')
-                reward, cost, ep_len = results[idx].result()
+                reward, cost, ep_len = results[idx]
                 f.write('reward:' + str(round(reward, 2)) + ',')
                 f.write('cost:' + str(round(cost, 2)) + ',')
                 f.write('ep_len:' + str(ep_len))
