@@ -1,6 +1,7 @@
 ##### Project Specification #####
 **/runs
-**/exp-x
+**/exp-x/SafeRL*
+**/exp-x/PPO*
 
 ##### Python.gitignore #####
 # Byte-compiled / optimized / DLL files

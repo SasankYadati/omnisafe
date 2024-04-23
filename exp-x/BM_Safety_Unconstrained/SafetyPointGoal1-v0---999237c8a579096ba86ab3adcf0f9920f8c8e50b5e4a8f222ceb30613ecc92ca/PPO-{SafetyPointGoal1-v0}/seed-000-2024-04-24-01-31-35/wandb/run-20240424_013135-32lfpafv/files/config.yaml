@@ -1,0 +1,123 @@
+wandb_version: 1
+
+seed:
+  desc: null
+  value: 0
+train_cfgs:
+  desc: null
+  value:
+    device: cuda:0
+    torch_threads: 8
+    vector_env_nums: 4
+    parallel: 1
+    total_steps: 600000
+    epochs: 30
+algo_cfgs:
+  desc: null
+  value:
+    steps_per_epoch: 20000
+    update_iters: 40
+    batch_size: 64
+    target_kl: 0.02
+    entropy_coef: 0.0
+    reward_normalize: false
+    cost_normalize: false
+    obs_normalize: true
+    kl_early_stop: true
+    use_max_grad_norm: true
+    max_grad_norm: 40.0
+    use_critic_norm: true
+    critic_norm_coef: 0.001
+    gamma: 0.99
+    cost_gamma: 0.99
+    lam: 0.95
+    lam_c: 0.95
+    clip: 0.2
+    adv_estimation_method: gae
+    standardized_rew_adv: true
+    standardized_cost_adv: true
+    penalty_coef: 0.0
+    use_cost: false
+logger_cfgs:
+  desc: null
+  value:
+    use_wandb: true
+    wandb_project: Benchmark_Safety
+    use_tensorboard: true
+    save_model_freq: 100
+    log_dir: ./exp-x\BM_Safety_Unconstrained\SafetyPointGoal1-v0---999237c8a579096ba86ab3adcf0f9920f8c8e50b5e4a8f222ceb30613ecc92ca\
+    window_lens: 100
+model_cfgs:
+  desc: null
+  value:
+    weight_initialization_mode: kaiming_uniform
+    actor_type: gaussian_learning
+    linear_lr_decay: true
+    exploration_noise_anneal: false
+    std_range:
+    - 0.5
+    - 0.1
+    actor:
+      hidden_sizes:
+      - 64
+      - 64
+      activation: tanh
+      lr: 0.0003
+    critic:
+      hidden_sizes:
+      - 64
+      - 64
+      activation: tanh
+      lr: 0.0003
+exp_increment_cfgs:
+  desc: null
+  value:
+    seed: 0
+    train_cfgs:
+      total_steps: 600000
+      torch_threads: 8
+      vector_env_nums: 4
+      device: cuda:0
+    algo_cfgs:
+      steps_per_epoch: 20000
+    logger_cfgs:
+      wandb_project: Benchmark_Safety
+      use_wandb: true
+      log_dir: ./exp-x\BM_Safety_Unconstrained\SafetyPointGoal1-v0---999237c8a579096ba86ab3adcf0f9920f8c8e50b5e4a8f222ceb30613ecc92ca\
+exp_name:
+  desc: null
+  value: PPO-{SafetyPointGoal1-v0}
+env_id:
+  desc: null
+  value: SafetyPointGoal1-v0
+algo:
+  desc: null
+  value: PPO
+_wandb:
+  desc: null
+  value:
+    python_version: 3.8.19
+    cli_version: 0.16.6
+    framework: torch
+    is_jupyter_run: true
+    is_kaggle_kernel: false
+    start_time: 1713902507.0
+    t:
+      1:
+      - 1
+      - 55
+      2:
+      - 1
+      - 55
+      3:
+      - 13
+      - 16
+      - 23
+      - 61
+      4: 3.8.19
+      5: 0.16.6
+      8:
+      - 1
+      - 3
+      - 5
+      13: windows-amd64
