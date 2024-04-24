@@ -1,0 +1,1 @@
+Safet:{'algo': 'CPO', 'algo_cfgs:steps_per_epoch': 20000, 'env_id': 'SafetyPointGoal1-v0', 'logger_cfgs:use_wandb': true, 'logger_cfgs:wandb_project': 'Benchmark_Safety', 'train_cfgs:torch_threads': 8, 'train_cfgs:total_steps': 600000, 'train_cfgs:vector_env_nums': 4}: reward:9.42,cost:31.48,ep_len:1000.0
