@@ -16,14 +16,14 @@ algo_cfgs:
   desc: null
   value:
     steps_per_epoch: 20000
-    update_iters: 40
-    batch_size: 64
-    target_kl: 0.02
+    update_iters: 10
+    batch_size: 128
+    target_kl: 0.01
     entropy_coef: 0.0
     reward_normalize: false
     cost_normalize: false
     obs_normalize: true
-    kl_early_stop: true
+    kl_early_stop: false
     use_max_grad_norm: true
     max_grad_norm: 40.0
     use_critic_norm: true
@@ -32,12 +32,15 @@ algo_cfgs:
     cost_gamma: 0.99
     lam: 0.95
     lam_c: 0.95
-    clip: 0.2
     adv_estimation_method: gae
     standardized_rew_adv: true
     standardized_cost_adv: true
     penalty_coef: 0.0
     use_cost: true
+    cg_damping: 0.1
+    cg_iters: 15
+    fvp_obs: None
+    fvp_sample_freq: 1
 logger_cfgs:
   desc: null
   value:
@@ -45,14 +48,14 @@ logger_cfgs:
     wandb_project: Benchmark_Safety
     use_tensorboard: true
     save_model_freq: 100
-    log_dir: ./exp-x\BM_Safety_Lagrangian\SafetyPointGoal1-v0---47335d209c482a3ccbd6eb021625183261eac3afe3e5926d3ce1926b1403f582\
+    log_dir: ./exp-x\BM_Safety_Lagrangian\SafetyPointGoal1-v0---b139ee2e886e92ed9936723eb2b2a096596d8bd77629da1d6e785f1b3f09e6bd\
     window_lens: 100
 model_cfgs:
   desc: null
   value:
     weight_initialization_mode: kaiming_uniform
     actor_type: gaussian_learning
-    linear_lr_decay: true
+    linear_lr_decay: false
     exploration_noise_anneal: false
     std_range:
     - 0.5
@@ -62,13 +65,13 @@ model_cfgs:
       - 64
       - 64
       activation: tanh
-      lr: 0.0003
+      lr: null
     critic:
       hidden_sizes:
       - 64
       - 64
       activation: tanh
-      lr: 0.0003
+      lr: 0.001
 lagrange_cfgs:
   desc: null
   value:
@@ -76,9 +79,6 @@ lagrange_cfgs:
     lagrangian_multiplier_init: 0.001
     lambda_lr: 0.035
     lambda_optimizer: Adam
-env_cfgs:
-  desc: null
-  value: {}
 exp_increment_cfgs:
   desc: null
   value:
@@ -93,16 +93,16 @@ exp_increment_cfgs:
     logger_cfgs:
       wandb_project: Benchmark_Safety
       use_wandb: true
-      log_dir: ./exp-x\BM_Safety_Lagrangian\SafetyPointGoal1-v0---47335d209c482a3ccbd6eb021625183261eac3afe3e5926d3ce1926b1403f582\
+      log_dir: ./exp-x\BM_Safety_Lagrangian\SafetyPointGoal1-v0---b139ee2e886e92ed9936723eb2b2a096596d8bd77629da1d6e785f1b3f09e6bd\
 exp_name:
   desc: null
-  value: PPOLag-{SafetyPointGoal1-v0}
+  value: TRPOLag-{SafetyPointGoal1-v0}
 env_id:
   desc: null
   value: SafetyPointGoal1-v0
 algo:
   desc: null
-  value: PPOLag
+  value: TRPOLag
 _wandb:
   desc: null
   value:
@@ -111,7 +111,7 @@ _wandb:
     framework: torch
     is_jupyter_run: true
     is_kaggle_kernel: false
-    start_time: 1713907500.0
+    start_time: 1713912965.0
     t:
       1:
       - 1
@@ -120,7 +120,6 @@ _wandb:
       - 1
       - 55
       3:
-      - 2
       - 13
       - 16
       - 23

@@ -1,0 +1,20 @@
+
+{
+    "seed": 0,
+    "train_cfgs": {
+        "total_steps": 600000,
+        "torch_threads": 8,
+        "vector_env_nums": 4,
+        "device": "cuda:0"
+    },
+    "algo_cfgs": {
+        "steps_per_epoch": 20000
+    },
+    "logger_cfgs": {
+        "wandb_project": "Benchmark_Safety",
+        "use_wandb": true,
+        "log_dir": "./exp-x\\BM_Safety_Lagrangian\\SafetyPointGoal1-v0---b139ee2e886e92ed9936723eb2b2a096596d8bd77629da1d6e785f1b3f09e6bd\\"
+    },
+    "algo": "TRPOLag",
+    "env_id": "SafetyPointGoal1-v0"
+}
