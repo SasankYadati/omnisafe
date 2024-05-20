@@ -1,0 +1,133 @@
+wandb_version: 1
+
+seed:
+  desc: null
+  value: 0
+train_cfgs:
+  desc: null
+  value:
+    device: cpu
+    torch_threads: 16
+    vector_env_nums: 1
+    parallel: 1
+    total_steps: 600000
+    epochs: 30
+algo_cfgs:
+  desc: null
+  value:
+    steps_per_epoch: 20000
+    update_iters: 10
+    batch_size: 128
+    target_kl: 0.01
+    entropy_coef: 0.0
+    reward_normalize: false
+    cost_normalize: false
+    obs_normalize: true
+    kl_early_stop: false
+    use_max_grad_norm: true
+    max_grad_norm: 40.0
+    use_critic_norm: true
+    critic_norm_coef: 0.001
+    gamma: 0.99
+    cost_gamma: 0.99
+    lam: 0.95
+    lam_c: 0.95
+    adv_estimation_method: gae
+    standardized_rew_adv: true
+    standardized_cost_adv: true
+    penalty_coef: 0.0
+    use_cost: true
+    cg_damping: 0.1
+    cg_iters: 15
+    fvp_obs: None
+    fvp_sample_freq: 1
+logger_cfgs:
+  desc: null
+  value:
+    use_wandb: true
+    wandb_project: omnisafe
+    use_tensorboard: true
+    save_model_freq: 100
+    log_dir: exp-x\TransferModels\SafetyPointGoal1-v0---f58ca1a463c0273cc1b6ca3902826cae538e180bd08f94f50e82a46844a78ecc
+    window_lens: 100
+model_cfgs:
+  desc: null
+  value:
+    weight_initialization_mode: kaiming_uniform
+    actor_type: gaussian_learning
+    linear_lr_decay: false
+    exploration_noise_anneal: false
+    std_range:
+    - 0.5
+    - 0.1
+    actor:
+      hidden_sizes:
+      - 64
+      - 64
+      activation: tanh
+      lr: null
+    critic:
+      hidden_sizes:
+      - 64
+      - 64
+      activation: tanh
+      lr: 0.001
+    load_actor_critic: exp-x\TransferModels\SafetyPointGoal1-v0---f58ca1a463c0273cc1b6ca3902826cae538e180bd08f94f50e82a46844a78ecc\TRPOLag-{SafetyPointGoal1-v0}\seed-000-2024-05-19-17-50-17\torch_save\epoch-30.pt
+lagrange_cfgs:
+  desc: null
+  value:
+    cost_limit: 25.0
+    lagrangian_multiplier_init: 0.001
+    lambda_lr: 0.035
+    lambda_optimizer: Adam
+exp_increment_cfgs:
+  desc: null
+  value:
+    train_cfgs:
+      total_steps: 600000
+      vector_env_nums: 1
+      parallel: 1
+    algo_cfgs:
+      steps_per_epoch: 20000
+    model_cfgs:
+      load_actor_critic: exp-x\TransferModels\SafetyPointGoal1-v0---f58ca1a463c0273cc1b6ca3902826cae538e180bd08f94f50e82a46844a78ecc\TRPOLag-{SafetyPointGoal1-v0}\seed-000-2024-05-19-17-50-17\torch_save\epoch-30.pt
+    logger_cfgs:
+      use_wandb: true
+      use_tensorboard: true
+      log_dir: exp-x\TransferModels\SafetyPointGoal1-v0---f58ca1a463c0273cc1b6ca3902826cae538e180bd08f94f50e82a46844a78ecc
+exp_name:
+  desc: null
+  value: TRPOLag-{SafetyPointGoal2-v0}
+env_id:
+  desc: null
+  value: SafetyPointGoal2-v0
+algo:
+  desc: null
+  value: TRPOLag
+_wandb:
+  desc: null
+  value:
+    python_version: 3.8.19
+    cli_version: 0.17.0
+    framework: torch
+    is_jupyter_run: true
+    is_kaggle_kernel: false
+    start_time: 1716135597
+    t:
+      1:
+      - 1
+      - 55
+      2:
+      - 1
+      - 55
+      3:
+      - 13
+      - 16
+      - 23
+      4: 3.8.19
+      5: 0.17.0
+      8:
+      - 1
+      - 3
+      - 5
+      13: windows-amd64

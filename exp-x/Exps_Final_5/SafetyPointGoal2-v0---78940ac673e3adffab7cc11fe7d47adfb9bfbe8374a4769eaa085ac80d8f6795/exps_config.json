@@ -1,0 +1,19 @@
+
+{
+    "seed": 0,
+    "train_cfgs": {
+        "total_steps": 600000,
+        "vector_env_nums": 4,
+        "device": "cuda:0"
+    },
+    "algo_cfgs": {
+        "steps_per_epoch": 20000
+    },
+    "logger_cfgs": {
+        "wandb_project": "Experiments_Final",
+        "use_wandb": true,
+        "log_dir": "./exp-x\\Exps_Final_5\\SafetyPointGoal2-v0---78940ac673e3adffab7cc11fe7d47adfb9bfbe8374a4769eaa085ac80d8f6795\\"
+    },
+    "algo": "PPOLag",
+    "env_id": "SafetyPointGoal2-v0"
+}

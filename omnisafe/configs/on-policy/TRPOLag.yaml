@@ -124,6 +124,7 @@ defaults:
       activation: tanh
       # learning rate
       lr: 0.001
+    load_actor_critic: ""
   # lagrangian configurations
   lagrange_cfgs:
     # Tolerance of constraint violation

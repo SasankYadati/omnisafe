@@ -1,0 +1,35 @@
+### Goal lvl 1 [Done]
+PPO (23.72, 56.92)
+TRPO (26.82, 52.20)
+PPOLag (13.57, 55.02)
+TRPOLag (26.69, 46.66)
+
+### Button lvl 1 [Done]
+PPO (14.30, 148.02)
+TRPO (24.96, 167.52)
+PPOLag (7.48, 122.52)
+TRPOLag (18.06, 139.80)
+
+### Goal lvl 2
+
+zero shot
+
+PPOLag (10.38, 180.64)
+TRPOLag (22.31, 152.66)
+
+full training
+
+PPOLag (9.17, 138.00)
+TRPOLag (16.50, 153.50)
+
+### Button lvl 2
+
+zero shot
+
+PPOLag (7.24, 141.88)
+TRPOLag (11.25, 144.80)
+
+full training
+
+PPOLag (6.73, 120.96)
+TRPOLag (15.33, 149.70)

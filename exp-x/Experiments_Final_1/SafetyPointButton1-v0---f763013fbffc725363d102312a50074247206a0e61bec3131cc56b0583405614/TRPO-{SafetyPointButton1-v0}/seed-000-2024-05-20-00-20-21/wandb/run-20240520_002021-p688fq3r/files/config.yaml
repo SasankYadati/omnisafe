@@ -1,0 +1,128 @@
+wandb_version: 1
+
+seed:
+  desc: null
+  value: 0
+train_cfgs:
+  desc: null
+  value:
+    device: cuda:0
+    torch_threads: 8
+    vector_env_nums: 4
+    parallel: 1
+    total_steps: 600000
+    epochs: 30
+algo_cfgs:
+  desc: null
+  value:
+    steps_per_epoch: 20000
+    update_iters: 10
+    batch_size: 128
+    target_kl: 0.01
+    entropy_coef: 0.0
+    reward_normalize: false
+    cost_normalize: false
+    obs_normalize: true
+    kl_early_stop: false
+    use_max_grad_norm: true
+    max_grad_norm: 40.0
+    use_critic_norm: true
+    critic_norm_coef: 0.001
+    gamma: 0.99
+    cost_gamma: 0.99
+    lam: 0.95
+    lam_c: 0.95
+    adv_estimation_method: gae
+    standardized_rew_adv: true
+    standardized_cost_adv: true
+    penalty_coef: 0.0
+    use_cost: false
+    cg_damping: 0.1
+    cg_iters: 15
+    fvp_obs: None
+    fvp_sample_freq: 1
+logger_cfgs:
+  desc: null
+  value:
+    use_wandb: true
+    wandb_project: Experiments_Final
+    use_tensorboard: true
+    save_model_freq: 100
+    log_dir: ./exp-x\Experiments_Final_1\SafetyPointButton1-v0---f763013fbffc725363d102312a50074247206a0e61bec3131cc56b0583405614\
+    window_lens: 100
+model_cfgs:
+  desc: null
+  value:
+    weight_initialization_mode: kaiming_uniform
+    actor_type: gaussian_learning
+    linear_lr_decay: false
+    exploration_noise_anneal: false
+    std_range:
+    - 0.5
+    - 0.1
+    actor:
+      hidden_sizes:
+      - 64
+      - 64
+      activation: tanh
+      lr: null
+    critic:
+      hidden_sizes:
+      - 64
+      - 64
+      activation: tanh
+      lr: 0.001
+    load_actor_critic: ''
+exp_increment_cfgs:
+  desc: null
+  value:
+    seed: 0
+    train_cfgs:
+      total_steps: 600000
+      torch_threads: 8
+      vector_env_nums: 4
+      device: cuda:0
+    algo_cfgs:
+      steps_per_epoch: 20000
+    logger_cfgs:
+      wandb_project: Experiments_Final
+      use_wandb: true
+      log_dir: ./exp-x\Experiments_Final_1\SafetyPointButton1-v0---f763013fbffc725363d102312a50074247206a0e61bec3131cc56b0583405614\
+exp_name:
+  desc: null
+  value: TRPO-{SafetyPointButton1-v0}
+env_id:
+  desc: null
+  value: SafetyPointButton1-v0
+algo:
+  desc: null
+  value: TRPO
+_wandb:
+  desc: null
+  value:
+    python_version: 3.8.19
+    cli_version: 0.17.0
+    framework: torch
+    is_jupyter_run: true
+    is_kaggle_kernel: false
+    start_time: 1716144628
+    t:
+      1:
+      - 1
+      - 55
+      2:
+      - 1
+      - 55
+      3:
+      - 2
+      - 13
+      - 16
+      - 23
+      - 61
+      4: 3.8.19
+      5: 0.17.0
+      8:
+      - 1
+      - 3
+      - 5
+      13: windows-amd64

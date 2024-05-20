@@ -1,0 +1,19 @@
+
+{
+    "seed": 0,
+    "train_cfgs": {
+        "total_steps": 600000,
+        "vector_env_nums": 4,
+        "device": "cuda:0"
+    },
+    "algo_cfgs": {
+        "steps_per_epoch": 20000
+    },
+    "logger_cfgs": {
+        "wandb_project": "Experiments_Final",
+        "use_wandb": true,
+        "log_dir": "./exp-x\\Exps_Final_6\\SafetyPointButton2-v0---a094a2c4ee75c8f5e6ec093fa12a4acc298af447320d5790d950e54ddff69ffe\\"
+    },
+    "algo": "TRPOLag",
+    "env_id": "SafetyPointButton2-v0"
+}

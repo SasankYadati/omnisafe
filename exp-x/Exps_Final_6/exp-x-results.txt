@@ -1,0 +1,2 @@
+Safet:{'algo': 'TRPOLag', 'algo_cfgs:steps_per_epoch': 20000, 'env_id': 'SafetyPointButton2-v0', 'logger_cfgs:use_wandb': true, 'logger_cfgs:wandb_project': 'Experiments_Final', 'train_cfgs:total_steps': 600000, 'train_cfgs:vector_env_nums': 4}: reward:14.61,cost:125.22,ep_len:1000.0
+Safet:{'algo': 'PPOLag', 'algo_cfgs:steps_per_epoch': 20000, 'env_id': 'SafetyPointButton2-v0', 'logger_cfgs:use_wandb': true, 'logger_cfgs:wandb_project': 'Experiments_Final', 'train_cfgs:total_steps': 600000, 'train_cfgs:vector_env_nums': 4} : reward:6.43,cost:117.08,ep_len:1000.0

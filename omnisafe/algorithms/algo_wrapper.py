@@ -220,7 +220,9 @@ class AlgoWrapper:
         Raises:
             AssertionError: If the :meth:`learn` method has not been called.
         """
-        assert self._evaluator is not None, 'Please run learn() first!'
+        # assert self._evaluator is not None, 'Please run learn() first!'
+        if self._evaluator is None:
+            self._evaluator = Evaluator()
         scan_dir = os.scandir(os.path.join(self.agent.logger.log_dir, 'torch_save'))
         for item in scan_dir:
             if item.is_file() and item.name.split('.')[-1] == 'pt':

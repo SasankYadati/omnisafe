@@ -16,6 +16,7 @@
 
 from __future__ import annotations
 
+import os
 import time
 from typing import Any
 
@@ -94,6 +95,14 @@ class PolicyGradient(BaseAlgo):
             model_cfgs=self._cfgs.model_cfgs,
             epochs=self._cfgs.train_cfgs.epochs,
         ).to(self._device)
+        
+        if self._cfgs.model_cfgs.load_actor_critic is not None and len(self._cfgs.model_cfgs.load_actor_critic) > 0:
+            model_path = self._cfgs.model_cfgs.load_actor_critic
+            try:
+                model_params = torch.load(model_path)
+            except FileNotFoundError as error:
+                raise FileNotFoundError('The model is not found in the save directory.') from error
+            self._actor_critic.load_state_dict(model_params['actor_critic'])
 
         if distributed.world_size() > 1:
             distributed.sync_params(self._actor_critic)
@@ -181,6 +190,7 @@ class PolicyGradient(BaseAlgo):
         )
 
         what_to_save: dict[str, Any] = {}
+        what_to_save['actor_critic'] = self._actor_critic
         what_to_save['pi'] = self._actor_critic.actor
         if self._cfgs.algo_cfgs.obs_normalize:
             obs_normalizer = self._env.save()['obs_normalizer']

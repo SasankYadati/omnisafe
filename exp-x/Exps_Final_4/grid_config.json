@@ -1,0 +1,27 @@
+{
+    "env_id": [
+        "SafetyPointButton1-v0"
+    ],
+    "algo": [
+        "PPOLag",
+        "TRPOLag"
+    ],
+    "logger_cfgs:use_wandb": [
+        true
+    ],
+    "logger_cfgs:wandb_project": [
+        "Experiments_Final"
+    ],
+    "train_cfgs:vector_env_nums": [
+        4
+    ],
+    "algo_cfgs:steps_per_epoch": [
+        20000
+    ],
+    "train_cfgs:total_steps": [
+        600000
+    ],
+    "seed": [
+        0
+    ]
+}
